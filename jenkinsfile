@@ -2,14 +2,16 @@
 pipeline {
 
     agent any
+    tools {
+        maven 'Maven_3.9.0' // Name of the Maven installation defined in Jenkins
+    }
     stages {
-        stage("Build") {
+        stage('Check Maven Path') {
             steps {
-               tool 'M2_HOME'
-               sh 'mvn -version'
-               sh 'mvn clean package'
+                sh 'echo "Maven path: ${tool \'Maven_3.9.0\'}"'
+                sh 'mvn -version'
+                sh 'mvn clean package'
             }
         }
     }
-    
 }
