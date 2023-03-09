@@ -8,7 +8,6 @@ pipeline {
     stages {
         stage('Check Maven Path') {
             steps {
-                sh 'echo "Maven path: ${tool \'Maven_3.9.0\'}"'
                 sh 'mvn -version'
                 sh 'mvn clean package'
             }
