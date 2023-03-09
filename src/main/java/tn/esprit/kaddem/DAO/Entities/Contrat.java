@@ -35,7 +35,7 @@ public class Contrat implements Serializable {
     @Transient
     float salaire;
 
-    @ManyToOne
-    Etudiant etudiant;
+    @ManyToOne(cascade = CascadeType.ALL)
+    Etudiant etudiant = null;
 
 }

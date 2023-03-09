@@ -1,5 +1,6 @@
 package tn.esprit.kaddem.DAO.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,10 +23,8 @@ public class Departement implements Serializable {
 
     private String nomDepartement;
 
-    @OneToMany(mappedBy = "departement")
+    @OneToMany(mappedBy = "departement", cascade = CascadeType.REMOVE)
+    @JsonIgnore
     private List<Etudiant> etudiants;
-
-    @ManyToOne
-    private Universite universite;
 
 }

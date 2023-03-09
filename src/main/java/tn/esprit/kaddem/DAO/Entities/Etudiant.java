@@ -1,9 +1,11 @@
 package tn.esprit.kaddem.DAO.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,11 +32,14 @@ public class Etudiant implements Serializable {
     private Domaine domaine;
 
     @ManyToOne
-    Departement departement;
+    @JsonIgnore
+    Departement departement = null;
 
     @ManyToMany(mappedBy = "etudiants")
-    private List<Equipe> equipes;
+    @JsonIgnore
+    private List<Equipe> equipes = null;
 
     @OneToMany(mappedBy = "etudiant")
-    List<Contrat> contrats;
+    @JsonIgnore
+    List<Contrat> contrats = null;
 }
