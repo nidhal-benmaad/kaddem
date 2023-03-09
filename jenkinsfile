@@ -2,19 +2,7 @@
 pipeline {
 
     agent any
-    tools {
-        maven "M2_HOME"
-    }
     stages {
-        stage ('GIT') {
-            steps {
-               echo "Getting Project from Git"; 
-                git branch: "main", 
-                    url: "https://github.com/nidhal-benmaad/kaddem.git",
-                    credentialsId:"2dcf7ad1-4bc9-4eb5-88e8-00153c8011e3";
-            }
-        }
-       
         stage("Build") {
             steps {
                sh 'mvn -version'
